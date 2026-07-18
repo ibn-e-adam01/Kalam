@@ -262,21 +262,24 @@ app.post('/chat', async (req, res) => {
     let user = await userModel.findOne({email: verifiedToken.email});
     console.log(user._id)
 
-    if(!Message || !Message.trim()){
-        return res.status(400).json({
-            message:"empty message will not be accepted!!!",
-            success: false
-        });
-    }
-
+    // if(!Message || !Message.trim()){
+    //     return res.status(400).json({
+    //         message:"empty message will not be accepted!!!",
+    //         success: false
+    //     });
+    // }
+    if(Message){
      const message = await messageModel.create({
         message: Message,
         sender: user._id,
         reciever: UserFoundID
     });
     console.log("message object is : ",message);
+    
     user.messages.push(message._id);
     await user.save();
+
+}
 
     let chat;
 

@@ -1,0 +1,19 @@
+The Flow of our App:
+
+Search "Umar" --> Backend(User-->Find user's username with query) --> Returning matching Users --> Click "Umar" --> In Recent Chats, find Chat with Umar, if not have one --> Create a new Chat --> return ChatID --> on frontend, socket.emit("join-room", ChatID) --> Backend(socket.join(ChatID)) --> Now Chatting Starts!!! #ChatID = Room ID where ChatID is a schema of MongoDB.
+
+
+Two New Names in this game:
+#query? --> a req to mongoDB/database for a data
+#regex? --> 'Al' --> "Ali", "Albani", etc...
+//one more extra: options? --> 'i' --> case-insensitive
+
+#let a = [1,2,3,4,5]
+#let c = [7,6,5,4,3]
+#let b = [...c] ---> b = [7, 6, 5, 4, 3] //spread_operators
+
+
+let fruits = ["banana", "apple", "orange"]
+fruits.map((fruit) => {
+    <button key={fruit._id}>{fruit}</button> ----> banana!!!
+})

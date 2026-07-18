@@ -33,13 +33,13 @@ const server = http.createServer(app);
 app.use(express.json());
 const io = socket(server, {
     cors:{
-        origin: process.env.VITE_FRONTEND_URL,
+        origin: "https://kalamchat.vercel.app",
         credentials: true
     }
 });
 
 app.use(cors({
-    origin: process.env.VITE_FRONTEND_URL,
+    origin: "https://kalamchat.vercel.app",
     methods: ["GET", "POST"],
     credentials: true
 }));

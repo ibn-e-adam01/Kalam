@@ -43,7 +43,7 @@ const sendUserFoundId = async () => {
     // console.log(res.data.users);
     let foundId = res.data.users[0]._id
    
-    // console.log("Found ID: ", foundId)
+    console.log("Found ID: ", foundId)
     
     // console.log(res.data.users[0].username);
 
@@ -129,7 +129,7 @@ useEffect(() => {
              setSelectedUser(userClicked._id);
              setUserFoundID(userClicked._id);
 
-             let res = await axios.post(`${API}/room`, {UserFoundID: userClicked._id}, {withCredentials: true});
+             let res = await axios.post(`${API}/chat`, {UserFoundID: userClicked._id}, {withCredentials: true});
 
              setRoomID(res.data.roomIdFound || res.data.chat._id);
             

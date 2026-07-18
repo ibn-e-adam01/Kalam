@@ -252,7 +252,7 @@ app.get('/messages/:reciever', async (req, res) => {
 })
 
 app.post('/chat', async (req, res) => {
-    let {UserFoundID, Message} = req.body;
+    let {UserFoundID, Message = ''} = req.body;
     console.log(Message);
     console.log(UserFoundID);
     let token = req.cookies.token;
@@ -262,14 +262,8 @@ app.post('/chat', async (req, res) => {
     let user = await userModel.findOne({email: verifiedToken.email});
     console.log(user._id)
 
-    if(!Message || !Message.trim()){
-        return res.status(400).json({
-            message:"empty message will not be accepted!!!",
-            success: false
-        });
-    }
- 
-     const message = await messageModel.create({
+    if(Message && Message.trim()){
+        const message = await messageModel.create({
         message: Message,
         sender: user._id,
         reciever: UserFoundID
@@ -278,48 +272,35 @@ app.post('/chat', async (req, res) => {
     
     user.messages.push(message._id);
     await user.save();
-    
-    
 
-    res.json({
+        res.json({
         message: 'Message recieved!!!',
         success: true,
         user,
         message
     })
-});
-
-app.post('/room', async (req, res) => {
-    let {UserFoundID} = req.body
-    console.log(UserFoundID);
-
-     let token = req.cookies.token;
-    console.log(token)
-    let verifiedToken = jwt.verify(token, process.env.JWT_SECRET);
-    
-    let user = await userModel.findOne({email: verifiedToken.email});
-    console.log(user._id);
+}
 
     let chat;
 
     let chatFound = await chatModel.findOne({participants: {$all: [UserFoundID, user._id]}});
     console.log("THE ALREADY EXISTING FOUND CHAT IS: ",chatFound)
 
-    console.log("THE FOUND USER IS: ",user);   
+    console.log("THE FOUND USER IS: ",user); 
 
-    
     if(chatFound){
         console.log("Before Chat Found")
         return res.json({
         message: 'Already Existing RoomID recieved!!!',
         success: true,
         roomIdFound: chatFound._id,
+        message,
         user
     })
     }
 
-    
-     chat = await chatModel.create({
+
+    chat = await chatModel.create({
         participants: [UserFoundID, user._id]
     });
     console.log("THE CHAT IS HERE: ",chat);
@@ -328,10 +309,12 @@ app.post('/room', async (req, res) => {
         message: 'RoomID recieved!!!',
         success: true,
         user,
+        message,
         chat
     })
 
-})
+
+});
 
 app.post('/login', async (req, res) => {
     let{Email, Password} = req.body;

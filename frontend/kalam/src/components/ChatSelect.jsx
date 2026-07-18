@@ -56,7 +56,7 @@ const sendUserFoundId = async () => {
       return [...prev, clickedUser]; // [[{user1 details}, {user2 details}, ...]]
     });
 
-  let response = await axios.post(`${API}/chat`, {UserFoundID: foundId}, 
+  let response = await axios.post(`${API}/message`, {UserFoundID: foundId}, 
     {withCredentials: true}
   );
 
@@ -131,7 +131,7 @@ useEffect(() => {
              setSelectedUser(userClicked._id);
              setUserFoundID(userClicked._id);
 
-             let res = await axios.post(`${API}/chat`, {UserFoundID: userClicked._id}, {withCredentials: true});
+             let res = await axios.post(`${API}/room`, {UserFoundID: userClicked._id}, {withCredentials: true});
 
              setRoomID(res.data.roomIdFound || res.data.chat._id);
             

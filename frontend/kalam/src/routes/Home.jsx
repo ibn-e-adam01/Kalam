@@ -22,7 +22,8 @@ import ChatSection from '../components/ChatSection'
 
 
 const Home = () => {
-  const socket = io("http://localhost:3000");
+  const API = import.meta.env.VITE_BACKEND_URL;
+  const socket = io(`${API}`);
   console.log("Frontend Is connected to socket!!!");
   const [Search, setSearch] = useState("");
   const [ChatText, setChatText] = useState("");

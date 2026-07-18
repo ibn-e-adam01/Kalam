@@ -110,8 +110,10 @@ useEffect(() => {
       if(!Message.trim()){
         return;
       }
-
+      console.log(Message);
+      console.log(UserFound);
       console.log("sending message...")
+      
        let res = await axios.post(`${API}/chat`, {Message, UserFoundID}, 
         {withCredentials: true}
        )

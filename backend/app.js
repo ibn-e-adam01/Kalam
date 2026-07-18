@@ -33,7 +33,7 @@ const server = http.createServer(app);
 app.use(express.json());
 const io = socket(server, {
     cors:{
-        origin: "http://localhost:5173",
+        origin: process.env.VITE_FRONTEND_URL,
         credentials: true
     }
 });
@@ -48,6 +48,7 @@ app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
+app.set('trust proxy', 1);
 
 app.post('/uploads', upload.single("profilePicture"), async (req, res) => {
     console.log(req.file);
@@ -70,7 +71,11 @@ app.post('/uploads', upload.single("profilePicture"), async (req, res) => {
 
 app.post('/logout', (req, res) => {
     let token = req.cookies.token
-    res.clearCookie("token").json({
+    res.clearCookie("token", {
+            secure: true,
+            httpOnly: true,
+            sameSite: "none"
+        }).json({
         message: "cookie cleared the token",
         success: true
     });
@@ -159,7 +164,11 @@ app.post('/', async (req, res) => {
     });
         console.log(user);
         let token = jwt.sign({email: Email, id: user._id}, process.env.JWT_SECRET);
-        res.cookie("token", token).json({
+        res.cookie("token", token, {
+            secure: true,
+            httpOnly: true,
+            sameSite: "none"
+        }).json({
             status: true,
             user
         })
@@ -320,7 +329,11 @@ app.post('/login', async (req, res) => {
             });
         }
         let token = jwt.sign({email: Email, id: user._id}, process.env.JWT_SECRET);
-        res.cookie("token", token).json({
+        res.cookie("token", token, {
+            secure: true,
+            httpOnly: true,
+            sameSite: "none"
+        }).json({
         message: "logged in!",
         success: true,
         user

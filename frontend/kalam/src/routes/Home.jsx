@@ -34,7 +34,6 @@ const Home = () => {
   const [UserFoundID, setUserFoundID] = useState("");
   const [RoomID, setRoomID] = useState("");
   const [Chat, setChat] = useState("");
-  const API = import.meta.env.VITE_BACKEND_URL;
 
   return (
    <>

@@ -111,7 +111,7 @@ useEffect(() => {
         return;
       }
       console.log(Message);
-      console.log(UserFound);
+      console.log(UserFoundID);
       console.log("sending message...")
       
        let res = await axios.post(`${API}/chat`, {Message, UserFoundID}, 

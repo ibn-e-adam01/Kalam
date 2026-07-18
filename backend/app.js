@@ -39,7 +39,7 @@ const io = socket(server, {
 });
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: process.env.VITE_FRONTEND_URL,
     methods: ["GET", "POST"],
     credentials: true
 }));

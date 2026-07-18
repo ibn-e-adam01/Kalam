@@ -18,6 +18,7 @@ const Profile = () => {
   const [User, setUser] = useState([]);
   const [File, setFile] = useState("");
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_BACKEND_URL;
 
   const formdata = new FormData();
   formdata.append("profilePicture", File); //Reason: we cannot send file data in json format to backend, it doesn't work like that, so we have to make an instance here and send it to backend using axios!!!|
@@ -25,7 +26,7 @@ const Profile = () => {
   const handleLogout = async (e) =>{
     e.preventDefault();
 
-    let res = await axios.post("http://localhost:3000/logout", {
+    let res = await axios.post(`${API}/logout`, {
       withCredentials: true
     });
 
@@ -36,18 +37,18 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.post("http://localhost:3000/uploads", formdata, {
+    let res = await axios.post(`${API}/uploads`, formdata, {
       withCredentials: true
     });
 
     console.log(res.data.user.profilePic)
-    console.log(`http://localhost:3000/uploads/${res.data.user.profilePic}`)
+    console.log(`${API}/uploads/${res.data.user.profilePic}`)
 
     getLoggedinUserData();
   }
 
    const getLoggedinUserData = async () => {
-      let res = await axios.get("http://localhost:3000/profile",{
+      let res = await axios.get(`${API}/profile`,{
         withCredentials:true
       })
 
@@ -81,7 +82,7 @@ const Profile = () => {
         </div>
         {User?.map((user) => (
         <div className='w-32 h-32 rounded-full flex overflow-hidden'>
-          <img src={`http://localhost:3000/uploads/${user.profilePic}`} className='object-cover' alt="" />
+          <img src={`${API}/uploads/${user.profilePic}`} className='object-cover' alt="" />
         </div>
         ))}
         

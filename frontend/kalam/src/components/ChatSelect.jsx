@@ -8,12 +8,12 @@ import {faFontAwesome, faMagnifyingGlass, faPaperPlane, faCircleUser, faCirclePl
 import { Menu, MoreVertical, ListFilter } from 'lucide-react';
 import {io} from 'socket.io-client'
 
-const ChatSelect = ({socket, SelectedUser, FoundUsers, setFoundUsers, setSelectedUser, UserFoundID, setUserFoundID,searchUsers,setsearchUsers, searchResults, setsearchResults, RoomID, setRoomID, Search, setSearch, ChatText, setChatText}) => {
+const ChatSelect = ({socket, API, SelectedUser, FoundUsers, setFoundUsers, setSelectedUser, UserFoundID, setUserFoundID,searchUsers,setsearchUsers, searchResults, setsearchResults, RoomID, setRoomID, Search, setSearch, ChatText, setChatText}) => {
 
 
 
 const searchUser = async () => {
-   let res = await axios.get(`http://localhost:3000/search`,{ 
+   let res = await axios.get(`${API}/search`,{ 
       params: {query: Search} },
       {withCredentials: true}
     );
@@ -35,7 +35,7 @@ const searchUser = async () => {
 }
 
 const sendUserFoundId = async () => {
-    let res = await axios.get(`http://localhost:3000/search`,{ 
+    let res = await axios.get(`${API}/search`,{ 
       params: {query: Search} },
       {withCredentials: true}
     );
@@ -56,7 +56,7 @@ const sendUserFoundId = async () => {
       return [...prev, clickedUser]; // [[{user1 details}, {user2 details}, ...]]
     });
 
-  let response = await axios.post('http://localhost:3000/chat', {UserFoundID: foundId}, 
+  let response = await axios.post(`${API}/chat`, {UserFoundID: foundId}, 
     {withCredentials: true}
   );
 
@@ -71,7 +71,7 @@ const sendUserFoundId = async () => {
 
 useEffect(() => {
   const getData = async () => {
-  let res = await axios.get(`http://localhost:3000/search`,{ 
+  let res = await axios.get(`${API}/search`,{ 
       params: {query: Search} },
       {withCredentials: true}
     );
@@ -131,7 +131,7 @@ useEffect(() => {
              setSelectedUser(userClicked._id);
              setUserFoundID(userClicked._id);
 
-             let res = await axios.post("http://localhost:3000/chat", {UserFoundID: userClicked._id}, {withCredentials: true});
+             let res = await axios.post(`${API}/chat`, {UserFoundID: userClicked._id}, {withCredentials: true});
 
              setRoomID(res.data.roomIdFound || res.data.chat._id);
             

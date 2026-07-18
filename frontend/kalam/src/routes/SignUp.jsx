@@ -17,6 +17,7 @@ const SignUp =  () => {
   const [Password, setPassword] = useState("");
   const [EmailisUsed, setEmailisUsed] = useState([]);
   const [NameisUsed, setNameisUsed] = useState([]);
+  const API = import.meta.env.VITE_BACKEND_URL;
 
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ const SignUp =  () => {
     Password
   }
 try{
-  let res = await axios.post('http://localhost:3000/', data, {
+  let res = await axios.post(`${API}/`, data, {
     headers: {
       "Content-Type": "application/json"
     }, withCredentials: true

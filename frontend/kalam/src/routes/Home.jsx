@@ -33,12 +33,13 @@ const Home = () => {
   const [UserFoundID, setUserFoundID] = useState("");
   const [RoomID, setRoomID] = useState("");
   const [Chat, setChat] = useState("");
+  const API = import.meta.env.VITE_BACKEND_URL;
 
   return (
    <>
     <div className='h-screen w-full bg-zinc-200 flex items-center justify-evenly text-zinc-100'>
 
-      <ChatSelect socket={socket} SelectedUser={SelectedUser} Search={Search} setSearch={setSearch} ChatText={ChatText} setChatText={setChatText} searchResults={searchResults} setsearchResults={setsearchResults} searchUsers={searchUsers} setsearchUsers={setsearchUsers} UserFoundID={UserFoundID} setUserFoundID={setUserFoundID} Chat={Chat} setChat={setChat} RoomID={RoomID} setRoomID={setRoomID} setSelectedUser={setSelectedUser} FoundUsers={FoundUsers} setFoundUsers={setFoundUsers} className={`${SelectedUser? "hidden md:flex" : "flex"} w-full md:w-1/3`}/>
+      <ChatSelect socket={socket} API={API} SelectedUser={SelectedUser} Search={Search} setSearch={setSearch} ChatText={ChatText} setChatText={setChatText} searchResults={searchResults} setsearchResults={setsearchResults} searchUsers={searchUsers} setsearchUsers={setsearchUsers} UserFoundID={UserFoundID} setUserFoundID={setUserFoundID} Chat={Chat} setChat={setChat} RoomID={RoomID} setRoomID={setRoomID} setSelectedUser={setSelectedUser} FoundUsers={FoundUsers} setFoundUsers={setFoundUsers} className={`${SelectedUser? "hidden md:flex" : "flex"} w-full md:w-1/3`}/>
 
       {SelectedUser? <ChatSection socket={socket} Search={Search} setSearch={setSearch} ChatText={ChatText} setChatText={setChatText} searchResults={searchResults} setsearchResults={setsearchResults} searchUsers={searchUsers} setsearchUsers={setsearchUsers} UserFoundID={UserFoundID} setUserFoundID={setUserFoundID} RoomID={RoomID} setRoomID={setRoomID} SelectedUser={SelectedUser} FoundUsers={FoundUsers} setFoundUsers={setFoundUsers} Chat={Chat} setChat={setChat} setSelectedUser={setSelectedUser} className={`${SelectedUser? "flex" : "hidden md:flex"} w-full md:w-2/3`}/> : <AnimationChat />}
 

@@ -15,6 +15,7 @@ const Login = () => {
 
    const [Email, setEmail] = useState("");
    const [Password, setPassword] = useState("");
+   const API = import.meta.env.VITE_BACKEND_URL;
  
    const navigate = useNavigate();
  
@@ -25,7 +26,7 @@ const Login = () => {
      Password
    }
  
-   let res = await axios.post('http://localhost:3000/login', dataLogin, {
+   let res = await axios.post(`${API}/login`, dataLogin, {
      headers: {
        "Content-Type": "application/json"
      }, withCredentials: true

@@ -7,14 +7,16 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFontAwesome, faMagnifyingGlass, faEllipsisVertical, faVideo, faPhoneVolume, faPaperPlane, faAngleLeft, faCircleUser, faLeftLong, faCirclePlus, faPaperclip, faUser, faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
 import {io} from 'socket.io-client'
+
   
 
-const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUserFoundID,searchUsers,setsearchUsers,FoundUsers, setFoundUsers, searchResults, setsearchResults, RoomID, setRoomID, Chat, setChat, Search, setSearch, ChatText, setChatText}) => {
+const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUserFoundID,searchUsers,setsearchUsers,FoundUsers, setFoundUsers, searchResults, setsearchResults, RoomID, setRoomID, Chat, setChat, Search, setSearch, ChatText, setChatText, API}) => {
     const [Message, setMessage] = useState("");
     const [Status, setStatus] = useState([]);
     const [Messages, setMessages] = useState([]);
     const [User, setUser] = useState('')
     const bottomref = useRef(null)
+    
 
     useEffect(() => {
 
@@ -28,7 +30,7 @@ const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUse
     }, [])
 
     const getMessages = async () => {
-      let res = await axios.get(`http://localhost:3000/messages/${UserFoundID}`, {
+      let res = await axios.get(`${API}/messages/${UserFoundID}`, {
         withCredentials: true
       })
 
@@ -53,7 +55,7 @@ const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUse
      let userLoggedin;
     
     const getDataUserLoggedIn = async () => {
-      let res = await axios.get('http://localhost:3000/chat', {
+      let res = await axios.get(`${API}/chat`, {
         withCredentials: true
       });
 
@@ -110,7 +112,7 @@ useEffect(() => {
       }
 
       console.log("sending message...")
-       let res = await axios.post("http://localhost:3000/chat", {Message, UserFoundID}, 
+       let res = await axios.post(`${API}/chat`, {Message, UserFoundID}, 
         {withCredentials: true}
        )
        if(res?.data?.success){
@@ -156,7 +158,7 @@ useEffect(() => {
             {/* <FontAwesomeIcon icon={faUser} className='text-3xl'/> */}
             {FoundUsers && FoundUsers?.map((user) => (
             <div className='h-9 ml-1 w-9 mr-1 rounded-full overflow-hidden flex'>
-              <img src={`http://localhost:3000/uploads/${user.profilePic}`} alt="" className='object-cover' />
+              <img src={`${API}/uploads/${user.profilePic}`} alt="" className='object-cover' />
             </div>
             ))} 
             

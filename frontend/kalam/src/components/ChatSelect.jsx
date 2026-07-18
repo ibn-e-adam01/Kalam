@@ -56,13 +56,11 @@ const sendUserFoundId = async () => {
       return [...prev, clickedUser]; // [[{user1 details}, {user2 details}, ...]]
     });
 
-  let response = await axios.post(`${API}/message`, {UserFoundID: foundId}, 
+  let response = await axios.post(`${API}/chat`, {UserFoundID: foundId}, 
     {withCredentials: true}
   );
 
-  let roomId = response.data.roomIdFound
-    // console.log(response.data.roomIdFound);
-    setRoomID(roomId || response.data.chat._id);
+ 
 
     setSearch("");
     setsearchResults([])

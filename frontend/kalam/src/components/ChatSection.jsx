@@ -55,7 +55,7 @@ const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUse
      let userLoggedin;
     
     const getDataUserLoggedIn = async () => {
-      let res = await axios.get(`${API}/message`, {
+      let res = await axios.get(`${API}/chat`, {
         withCredentials: true
       });
 
@@ -114,7 +114,7 @@ useEffect(() => {
       console.log(UserFoundID);
       console.log("sending message...")
       
-       let res = await axios.post(`${API}/message`, {Message, UserFoundID}, 
+       let res = await axios.post(`${API}/chat`, {Message, UserFoundID}, 
         {withCredentials: true}
        )
        if(res?.data?.success){

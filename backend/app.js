@@ -251,7 +251,7 @@ app.get('/messages/:reciever', async (req, res) => {
     res.json(messages);
 })
 
-app.post('/message', async (req, res) => {
+app.post('/chat', async (req, res) => {
     let {UserFoundID, Message} = req.body;
     console.log(Message);
     console.log(UserFoundID);

@@ -10,7 +10,8 @@ import {io} from 'socket.io-client'
 
   
 
-const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUserFoundID,searchUsers,setsearchUsers,FoundUsers, setFoundUsers, searchResults, setsearchResults, RoomID, setRoomID, Chat, setChat, Search, setSearch, ChatText, setChatText, API}) => {
+const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUserFoundID,searchUsers,setsearchUsers,FoundUsers, setFoundUsers, searchResults, setsearchResults, RoomID, setRoomID, Chat, setChat, Search, setSearch, ChatText, setChatText}) => {
+    const API = import.meta.env.VITE_BACKEND_URL
     const [Message, setMessage] = useState("");
     const [Status, setStatus] = useState([]);
     const [Messages, setMessages] = useState([]);

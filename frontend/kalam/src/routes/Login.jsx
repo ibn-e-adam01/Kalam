@@ -41,7 +41,7 @@ const Login = () => {
    <>
     <div className='md:h-screen h-dvh overflow-hidden w-100% md:bg-zinc-300 bg-zinc-900 justify-center flex'>
       <form action="" onSubmit={sendData}>
-        <div className='flex flex-col gap-11 items-center justify-center h-full py-4 bg-zinc-900 w-125 '>
+        <div className='flex flex-col gap-11 items-center justify-center px-4 h-full py-4 bg-zinc-900 w-125 '>
         <h1 className='md:text-5xl text-6xl  text-zinc-100 font-bold'>LOGIN</h1>
         <div className='flex flex-col gap-4'>
         

@@ -57,7 +57,7 @@ try{
    <>
     <div className='md:h-screen h-dvh overflow-hidden w-full md:bg-zinc-300 bg-zinc-900 flex justify-center'>
       <form action="" onSubmit={sendData}>
-        <div className='flex flex-col gap-11 items-center justify-center h-full py-4 bg-zinc-900 w-125 '>
+        <div className='flex flex-col gap-11 items-center justify-center px-4 h-full py-4 bg-zinc-900 w-125 '>
         <h1 className='md:text-5xl text-6xl text-zinc-100 font-bold'>SIGN UP</h1>
         <div className='flex flex-col gap-4 justify-center items-center'>
           <div className='flex items-center justify-center gap-1 flex-col'>

@@ -122,9 +122,12 @@ useEffect(() => {
        console.log(res.data.message);
        console.log(res.data);
       //  console.log([res.data.user])
-       console.log([res.data.message][0].message)
+      //  console.log([res.data.message][0].message)
       //  console.log(res.data.roomIdFound)
        setMessages((prev) => [...prev, res.data.message.message]); //this is messages in chat
+
+
+       console.log(RoomID)
        
 
        setMessage(""); //this message writing in input

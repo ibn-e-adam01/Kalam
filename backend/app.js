@@ -263,7 +263,9 @@ app.post('/chat', async (req, res) => {
     let verifiedToken = jwt.verify(token, process.env.JWT_SECRET);
     
     let user = await userModel.findOne({email: verifiedToken.email});
+    let oppositeUser = await userModel.findOne({_id: UserFoundID});
     console.log(user._id)
+
 
     if(Message && Message.trim()){
         const message = await messageModel.create({
@@ -289,7 +291,7 @@ app.post('/chat', async (req, res) => {
     let chatFound = await chatModel.findOne({participants: {$all: [UserFoundID, user._id]}});
     console.log("THE ALREADY EXISTING FOUND CHAT IS: ",chatFound)
 
-    console.log("THE FOUND USER IS: ",user); 
+    console.log("THE FOUND USER IS: ", oppositeUser); 
 
     if(chatFound){
         console.log("Before Chat Found")

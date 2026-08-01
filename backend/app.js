@@ -240,7 +240,7 @@ app.get('/messages/:reciever', async (req, res) => {
     let token = req.cookies.token;
     console.log(token);
     let verifiedToken = jwt.verify(token, process.env.JWT_SECRET);
-    let reciever = req.params.reciever;
+    let reciever = req.params.UserFoundID;
     console.log(reciever);
     let me = verifiedToken.id;
     console.log(me);

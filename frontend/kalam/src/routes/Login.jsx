@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
    <>
-    <div className='md:h-screen h-330 w-100% md:bg-zinc-300 gap-3 flex'>
+    <div className='md:h-screen h-dvh overflow-hidden w-100% md:bg-zinc-300 bg-zinc-900 justify-center flex'>
       <form action="" onSubmit={sendData}>
         <div className='flex flex-col gap-11 items-center justify-center h-full py-4 bg-zinc-900 w-125 '>
         <h1 className='md:text-5xl text-6xl  text-zinc-100 font-bold'>LOGIN</h1>
@@ -58,9 +58,7 @@ const Login = () => {
         </div>
         </form>
 
-        <div className='text-zinc-100 hidden md:flex'>
-
-        </div>
+       
         <div className='hidden md:flex items-center justify-center w-full'>
         <motion.img 
           src={LoadingData}

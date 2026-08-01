@@ -55,7 +55,7 @@ try{
 
   return (
    <>
-    <div className='md:h-screen h-330 w-full md:bg-zinc-300 gap-3 flex'>
+    <div className='md:h-screen h-dvh overflow-hidden w-full md:bg-zinc-300 bg-zinc-900 flex justify-center'>
       <form action="" onSubmit={sendData}>
         <div className='flex flex-col gap-11 items-center justify-center h-full py-4 bg-zinc-900 w-125 '>
         <h1 className='md:text-5xl text-6xl text-zinc-100 font-bold'>SIGN UP</h1>
@@ -86,9 +86,7 @@ try{
         </div>
         </form>
 
-        <div className='text-zinc-100'>
-
-        </div>
+        
         <div className='hidden md:flex items-center justify-center w-full'>
         <motion.img 
           src={LoadingData}

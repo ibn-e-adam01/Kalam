@@ -35,9 +35,8 @@ const ChatSection = ({socket, setSelectedUser, SelectedUser, UserFoundID, setUse
       })
 
       console.log(res.data)
-      setMessages(res.data)
+      setMessages([res.data])
     } 
-    getMessages();
 
 
     useEffect(() => {

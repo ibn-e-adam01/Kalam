@@ -237,10 +237,13 @@ app.get('/chat', async (req, res) => {
 
 
 app.get('/messages/:reciever', async (req, res) => {
-    let token = req.cookies.token
+    let token = req.cookies.token;
+    console.log(token);
     let verifiedToken = jwt.verify(token, process.env.JWT_SECRET);
     let reciever = req.params.reciever;
-    let me = verifiedToken.id
+    console.log(reciever);
+    let me = verifiedToken.id;
+    console.log(me);
     let messages = await messageModel.find({
         $or: [{
             sender: me,
@@ -251,7 +254,9 @@ app.get('/messages/:reciever', async (req, res) => {
         reciever: me
     }]
     }).sort({createdAt: 1});
+    console.log(messages);
     res.json(messages);
+    console.log("After messages sent to frontend in /messages/reciever")
 })
 
 app.post('/chat', async (req, res) => {

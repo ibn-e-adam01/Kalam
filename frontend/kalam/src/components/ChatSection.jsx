@@ -120,6 +120,7 @@ useEffect(() => {
        )
       
        console.log(res.data.message);
+       console.log(res.data);
       //  console.log([res.data.user])
        console.log([res.data.message][0].message)
        console.log(res.data.roomIdFound)

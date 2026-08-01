@@ -120,7 +120,7 @@ useEffect(() => {
        )
        if(res?.data?.success){
        console.log(res.data.message);
-       console.log([res.data.user])
+      //  console.log([res.data.user])
        console.log([res.data.message][0].message)
        console.log(res.data.roomIdFound)
        setMessages((prev) => [...prev, res.data.message]); //this is messages in chat
@@ -137,7 +137,7 @@ useEffect(() => {
         console.log("THE FRONTEND GOT ROOMID IS: ",res.data.roomIdFound);
         let roomId = res.data.roomIdFound
         setRoomID(roomId);
-               console.log("the roomID after setROOMID is: ",roomId)
+        console.log("the roomID after setROOMID is: ",roomId)
 
         
         socket.emit("UserMessage", {Message: res.data.message, RoomID: roomId});

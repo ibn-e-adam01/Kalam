@@ -165,9 +165,11 @@ app.post('/', async (req, res) => {
         console.log(user);
         let token = jwt.sign({email: Email, id: user._id}, process.env.JWT_SECRET);
         res.cookie("token", token, {
-            secure: true,
+            secure: process.env.NODE_ENV == "production",
             httpOnly: true,
-            sameSite: "none"
+            sameSite: process.env.NODE_ENV == "production"? "none" : "lax",
+            maxAge: 2592000,
+            path: '/'
         }).json({
             status: true,
             user
@@ -331,9 +333,11 @@ app.post('/login', async (req, res) => {
         }
         let token = jwt.sign({email: Email, id: user._id}, process.env.JWT_SECRET);
         res.cookie("token", token, {
-            secure: true,
+            secure: process.env.NODE_ENV == "production",
             httpOnly: true,
-            sameSite: "none"
+            sameSite: process.env.NODE_ENV == "production"? "none" : "lax",
+            maxAge: 2592000,
+            path: '/'
         }).json({
         message: "logged in!",
         success: true,

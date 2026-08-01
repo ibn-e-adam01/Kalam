@@ -313,7 +313,6 @@ app.post('/chat', async (req, res) => {
         message: 'RoomID recieved!!!',
         success: true,
         user,
-        message,
         chat
     })
 

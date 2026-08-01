@@ -307,7 +307,7 @@ app.post('/chat', async (req, res) => {
         roomIdFound: chatFound._id,
         user
     })
-    }
+    } else{
 
 
     chat = await chatModel.create({
@@ -321,6 +321,7 @@ app.post('/chat', async (req, res) => {
         user,
         chat
     })
+    }
 
 
 });

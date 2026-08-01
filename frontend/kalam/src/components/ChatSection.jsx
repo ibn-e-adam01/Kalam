@@ -136,7 +136,6 @@ useEffect(() => {
     
       
         console.log("THE FRONTEND GOT ROOMID IS: ",RoomID);
-        setRoomID(RoomID);
         console.log("the roomID after setROOMID is: ",RoomID)
 
         

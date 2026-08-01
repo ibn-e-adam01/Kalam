@@ -294,7 +294,6 @@ app.post('/chat', async (req, res) => {
         message: 'Already Existing RoomID recieved!!!',
         success: true,
         roomIdFound: chatFound._id,
-        message,
         user
     })
     }

@@ -297,6 +297,7 @@ app.post('/chat', async (req, res) => {
     console.log("THE ALREADY EXISTING FOUND CHAT IS: ",chatFound)
 
     console.log("THE FOUND USER IS: ", oppositeUser); 
+    console.log("At Backend, roomIdFound is: ", chatFound._id)
 
     if(chatFound){
         console.log("Before Chat Found")

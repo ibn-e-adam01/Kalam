@@ -118,7 +118,7 @@ useEffect(() => {
        let res = await axios.post(`${API}/chat`, {Message, UserFoundID}, 
         {withCredentials: true}
        )
-       if(res?.data?.success){
+       if(res?.data){
        console.log(res.data.message);
       //  console.log([res.data.user])
        console.log([res.data.message][0].message)

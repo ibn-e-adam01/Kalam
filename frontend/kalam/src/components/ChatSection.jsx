@@ -123,7 +123,7 @@ useEffect(() => {
        console.log(res.data);
       //  console.log([res.data.user])
        console.log([res.data.message][0].message)
-       console.log(res.data.roomIdFound)
+      //  console.log(res.data.roomIdFound)
        setMessages((prev) => [...prev, res.data.message]); //this is messages in chat
        
 
@@ -135,13 +135,12 @@ useEffect(() => {
 
     
       
-        console.log("THE FRONTEND GOT ROOMID IS: ",res.data.roomIdFound);
-        let roomId = res.data.roomIdFound
-        setRoomID(roomId);
-        console.log("the roomID after setROOMID is: ",roomId)
+        console.log("THE FRONTEND GOT ROOMID IS: ",RoomID);
+        setRoomID(RoomID);
+        console.log("the roomID after setROOMID is: ",RoomID)
 
         
-        socket.emit("UserMessage", {Message: res.data.message, RoomID: roomId});
+        socket.emit("UserMessage", {Message: res.data.message, RoomID: RoomID});
        
 
     }
@@ -173,8 +172,8 @@ useEffect(() => {
               ))}
         
                 {Status?.includes(UserFoundID)?
-            <h1 className='text-emerald-300 font-semibold text-xs'>·Online</h1>
-            : <h1 className='text-zinc-300 font-semibold text-xs'>·Offline</h1>
+            <h1 className='text-emerald-300 font-semibold text-xs'>Online</h1>
+            : <h1 className='text-zinc-300 font-semibold text-xs'>Offline</h1>
               }
             </div>
           

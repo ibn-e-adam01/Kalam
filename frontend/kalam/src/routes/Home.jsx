@@ -35,6 +35,20 @@ const Home = () => {
   const [RoomID, setRoomID] = useState("");
   const [Chat, setChat] = useState("");
 
+
+  const getLoggedinUserData = async () => {
+        let res = await axios.get(`${API}/chat`,{
+          withCredentials:true
+        })
+  
+        console.log(res.data.user)
+       
+      }
+  
+    useEffect(() => {
+        getLoggedinUserData();
+    },[]);
+
   return (
    <>
     <div className='h-screen w-full bg-zinc-200 flex items-center justify-evenly text-zinc-100'>

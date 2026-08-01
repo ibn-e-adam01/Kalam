@@ -130,7 +130,7 @@ useEffect(() => {
              setUserFoundID(userClicked._id);
 
              let res = await axios.post(`${API}/chat`, {UserFoundID: userClicked._id}, {withCredentials: true});
-              console.log(res?.data);
+              console.log("THE DATA IS: ",res?.data);
              setRoomID(res.data.roomIdFound || res.data.chat._id);
             
           }} className='w-30 rounded-3xl gap-1 h-10 mt-2 hover:bg-zinc-800 hover:cursor-pointer bg-zinc-700 flex justify-start px-4 items-center'>

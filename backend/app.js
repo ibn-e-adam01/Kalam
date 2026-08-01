@@ -295,7 +295,7 @@ app.post('/chat', async (req, res) => {
 
     if(chatFound){
         console.log("Before Chat Found")
-        res.json({
+        return res.json({
         message: 'Already Existing RoomID recieved!!!',
         success: true,
         roomIdFound: chatFound._id,

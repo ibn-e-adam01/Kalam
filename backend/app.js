@@ -70,11 +70,12 @@ app.post('/uploads', upload.single("profilePicture"), async (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    let token = req.cookies.token
     res.clearCookie("token", {
-            secure: true,
+            secure: process.env.NODE_ENV == "production",
             httpOnly: true,
-            sameSite: "none"
+            sameSite: process.env.NODE_ENV == "production"? "none" : "lax",
+            maxAge: 2592000,
+            path: '/'
         }).json({
         message: "cookie cleared the token",
         success: true

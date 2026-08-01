@@ -123,6 +123,7 @@ useEffect(() => {
       //  console.log([res.data.user])
        console.log([res.data.message][0].message)
        console.log(res.data.roomIdFound)
+       console.log("Not roomFound but created: ",res.data.chat._id)
        setMessages((prev) => [...prev, res.data.message]); //this is messages in chat
        
 

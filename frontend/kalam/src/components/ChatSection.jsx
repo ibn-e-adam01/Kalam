@@ -171,8 +171,8 @@ useEffect(() => {
               ))}
         
                 {Status?.includes(UserFoundID)?
-            <h1 className='text-emerald-300 font-semibold text-xs'>Online</h1>
-            : <h1 className='text-zinc-300 font-semibold text-xs'>Offline</h1>
+            <h1 className='text-emerald-300 font-semibold text-xs'>·Online</h1>
+            : <h1 className='text-zinc-300 font-semibold text-xs'>·Offline</h1>
               }
             </div>
           
@@ -193,7 +193,7 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className='bg-zinc-300 flex-1 overflow-y-auto py-5 px-3 items-end w-full'>
+      <div className='bg-zinc-300 flex-1 overflow-y-auto py-5 px-3 items-start w-full'>
          {Messages?.length > 0 &&
             Messages?.map((msg) => (
         <div className={`flex px-6 ${msg.sender === User._id? "justify-end" : "justify-start"} mb-3`}>

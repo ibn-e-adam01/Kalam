@@ -119,11 +119,12 @@ useEffect(() => {
         {withCredentials: true}
        )
        if(res?.data?.success){
-       console.log([res.data.message]);
+       console.log(res.data.message);
        console.log([res.data.user])
        console.log([res.data.message][0].message)
+       console.log(res.data.roomIdFound)
        setMessages((prev) => [...prev, res.data.message]); //this is messages in chat
-       }
+       
 
        setMessage(""); //this message writing in input
 
@@ -140,7 +141,7 @@ useEffect(() => {
 
         
         socket.emit("UserMessage", {Message: res.data.message, RoomID: roomId});
-
+        }
 
     }
 
